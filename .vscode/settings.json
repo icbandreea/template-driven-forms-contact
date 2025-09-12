@@ -1,25 +1,32 @@
 {
-  "editor.fontSize": 22,
+  "editor.fontSize": 13,
   "editor.fontFamily": "Source Code Pro",
-  "git.enabled": false,
+  "git.enabled": true,
   "editor.wrappingIndent": "indent",
   "editor.wordWrap": "on",
   "editor.minimap.enabled": false,
   "editor.glyphMargin": false,
   "files.autoSave": "onFocusChange",
   "workbench.editor.enablePreview": false,
-  "workbench.colorTheme": "Visual Studio Light",
+  "workbench.colorTheme": "Visual Studio Dark",
   "workbench.statusBar.visible": false,
   "editor.quickSuggestions": {
     "comments": "off",
-    "strings": "off",
-    "other": "off"
+    "strings": true,
+    "other": true
   },
   "editor.suggest.snippetsPreventQuickSuggestions": false,
-  "editor.suggestOnTriggerCharacters": false,
+  "editor.suggestOnTriggerCharacters": true,
   "editor.wordBasedSuggestions": "off",
-  "terminal.integrated.fontSize": 20,
+  "terminal.integrated.fontSize": 14,
   "terminal.integrated.fontFamily": "monospace",
   "window.zoomLevel": 1,
   "workbench.activityBar.location": "hidden",
+  "terminal.integrated.suggest.quickSuggestions": {
+
+    "commands": "on",
+    "arguments": "on",
+    "unknown": "off"
+  },
+  "emmet.useInlineCompletions": true,
 }
