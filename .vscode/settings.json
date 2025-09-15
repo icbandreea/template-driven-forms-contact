@@ -6,7 +6,7 @@
   "editor.wordWrap": "on",
   "editor.minimap.enabled": false,
   "editor.glyphMargin": false,
-  "files.autoSave": "onFocusChange",
+  "files.autoSave": "afterDelay",
   "workbench.editor.enablePreview": false,
   "workbench.colorTheme": "Visual Studio Dark",
   "workbench.statusBar.visible": false,

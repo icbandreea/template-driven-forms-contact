@@ -5,11 +5,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { addressTypeValues, Contact, phoneTypeValues } from '../contacts/contact.model';
 import { ContactsService } from '../contacts/contacts.service';
 import { RestrictedWordsValidator } from '../validators/restricted-words-validator.directive';
+import { DateValueAccessor } from '../date-value-accessor/date-value-accessor';
 
 
 
 @Component({
-  imports: [CommonModule, FormsModule, RestrictedWordsValidator],
+  imports: [CommonModule, FormsModule, RestrictedWordsValidator, DateValueAccessor],
   standalone: true,
   templateUrl: './edit-contact.component.html',
   styleUrls: ['./edit-contact.component.css']
@@ -22,7 +23,7 @@ export class EditContactComponent implements OnInit {
       personal: false,
       firstName: '',
       lastName: '',
-      dateOfBirth: '',
+      dateOfBirth: null,
       favoritesRanking: 0,
       phone: {
         phoneNumber: '',
