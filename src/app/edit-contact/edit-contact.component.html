@@ -34,29 +34,41 @@
       </div>
     </section>
     <section>
-      <nav>Phone</nav>
-      <div class="flex-column" ngModelGroup = "phone">
+      <nav>Phones</nav>
+      <div class="flex-column" ngModelGroup = "phones">
+      @for(phone of contact.phones; let i = $index; track i) {
+         <div class="flex-column">
         <div class="flex-group">
-          <input placeholder="Phone" [(ngModel)]="contact.phone.phoneNumber" name="phoneNumber"/>
-          <img src="/assets/plus-grey-blue.png" class="add" />
+          <input placeholder="Phone" [(ngModel)]="phone.phoneNumber" name="phoneNumber{{i}}"/>
+          <img src="/assets/plus-grey-blue.png" 
+          class="add" 
+          (click)="addPhone()"
+          [class.disabled]="contact.phones.length >= 5"
+          [title]="contact.phones.length >=5 ? 'Maxmum 5 phones' : 'Add phone'" />
         </div>
         <div class="radio">
-          @for(phoneType of phoneTypes; track phoneType) {
+          @for(phoneType of phoneTypes; track phoneType.value) {
             <span>
-              <input type="radio" [value]="phoneType.value" [(ngModel)]="contact.phone.phoneType" name="phoneType"> {{phoneType.title}}
+              <input type="radio" [value]="phoneType.value" [(ngModel)]="phone.phoneType" name="phoneType{{i}}"> {{phoneType.title}}
             </span>
           }
         </div>
+      </div>
+      }
       </div>
     </section>
     <section>
       <nav>Address</nav>
       <div>
         <div class="address" ngModelGroup = "address" #addressGroup="ngModelGroup" [class.error]="addressGroup.invalid && addressGroup.dirty">
-          <div class="flex-group">
-            <input placeholder="Address" [(ngModel)]="contact.address.streetAddress" name="streetAddress" required/>
-            <img src="/assets/plus-grey-blue.png" class="add" />
+          @for(streetAddress of contact.address.streetAddresses; track $index) {
+            <div class="flex-column">
+            <div class="flex-group">
+              <input placeholder="Address" [(ngModel)]="contact.address.streetAddresses[$index]" name="streetAddresses{{$index}}" required/>
+              <img src="/assets/plus-grey-blue.png" class="add" (click)="addStreetAddress()"/>
           </div>
+          </div>
+          }
           <input placeholder="City" [(ngModel)]="contact.address.city" name="city" required/>
           <input placeholder="State/Region" [(ngModel)]="contact.address.state" name="state" required/>
           <input placeholder="Zip/Postal Code" [(ngModel)]="contact.address.postalCode" name="postalCode" required/>
@@ -83,7 +95,7 @@
     </section>
       <div class="buttons">
         @if(!contactForm.submitted) {
-          <button class="secondary" type="button">Cancel</button>
+          <button class="secondary" type="button" (click)="cancelContact(contactForm)">Cancel</button>
         <button class="primary" type="submit" [disabled]="contactForm.invalid">Save</button>
         } @else {
           <button disabled>Saving...</button>

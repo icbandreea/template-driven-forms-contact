@@ -5,7 +5,7 @@ export interface Contact {
   lastName: string,
   dateOfBirth: Date | null,
   favoritesRanking: number | null,
-  phone: Phone,
+  phones: Phone[],
   address: Address,
   notes: string,
 }
@@ -16,7 +16,7 @@ export interface Phone {
 }
 
 export interface Address {
-  streetAddress: string,
+  streetAddresses: string[],
   city: string,
   state: string,
   postalCode: string,
